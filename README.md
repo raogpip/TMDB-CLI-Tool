@@ -81,4 +81,4 @@ The program will show an error message if:
 
 ## Credits 
 This project is inspired by the [roadmap.sh](https://roadmap.sh/) website, which provides a clear and structured guide for developers to follow in their learning journeys.
-Visit [roadmap.sh](https://roadmap.sh/) to explore the world of programming with a help of interactive roadmaps and interesting projects for yourself! 
+Visit [roadmap.sh](https://roadmap.sh/) to explore the world of programming with the help of interactive roadmaps and interesting projects for yourself! 
