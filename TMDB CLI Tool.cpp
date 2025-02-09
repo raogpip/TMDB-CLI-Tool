@@ -70,7 +70,28 @@ void get_movies(std::string type, const std::string api_access_token) {
 		if (result != CURLE_OK) {
 			std::cout << "CURL ERROR: " << curl_easy_strerror(result) << std::endl;
 		}
-		
+		else {
+
+			int http_code = 0;
+			curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &http_code);
+
+			if (http_code == 200) {
+				auto json_response = nlohmann::json::parse(response_data);
+				printMovies(json_response);
+			}
+			else {
+				std::cerr << "API Error: HTTP Status Code " << http_code << '\n';
+				if (http_code == 401) {
+					std::cerr << "Unauthorized: Invalid API key or token." << std::endl;
+				}
+				else if (http_code == 404) {
+					std::cerr << "Not Found: The requested resource does not exist." << std::endl;
+				}
+				else if (http_code >= 500) {
+					std::cerr << "Server Error: Something went wrong on the server side." << std::endl;
+				}
+			}
+		}
 
 		curl_easy_cleanup(handle);
 		curl_slist_free_all(headers);
