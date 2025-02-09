@@ -1,8 +1,10 @@
-
 #include <iostream>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "I am using json now!\n";
 }
 
