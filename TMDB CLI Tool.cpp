@@ -99,8 +99,12 @@ void get_movies(std::string type, const std::string api_access_token) {
 }
 
 void printMovies(nlohmann::json j) {
-	for (const auto &movie : j["results"]) {
-		std::cout << movie["original_title"] << "\n";
+	std::cout << "\n----- MOVIES -----\n\n";
+	for (const auto& movie : j["results"]) {
+		std::cout << "Title: " << movie["title"] << "\n";
+		std::cout << "Release Date: " << movie["release_date"] << "\n";
+		std::cout << "Rating: " << movie["vote_average"] << "\n";
+		std::cout << "-------------------------\n";
 	}
 }
 
